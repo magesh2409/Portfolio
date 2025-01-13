@@ -1,6 +1,6 @@
 <template>
     <div>
-        Education section Updated
+        Education
     </div>
 </template>
 
