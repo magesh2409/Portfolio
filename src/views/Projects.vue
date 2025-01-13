@@ -1,6 +1,6 @@
 <template>
     <div>
-        Projects
+        Projects Section
     </div>
 </template>
 
