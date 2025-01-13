@@ -1,6 +1,6 @@
 <template>
     <div>
-        Projects Section
+        updated project dection
     </div>
 </template>
 
