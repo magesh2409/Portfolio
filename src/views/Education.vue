@@ -1,6 +1,6 @@
 <template>
     <div>
-        Education 
+        Education section
     </div>
 </template>
 
