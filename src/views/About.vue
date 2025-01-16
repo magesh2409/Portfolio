@@ -3,13 +3,14 @@
         <div class="left">
             <div class="upper">
                 <div class="profile">
-                    <img src="../assets/Profile.png" alt="">
+                    <img src="../assets/photo.png" alt="">
                 </div>
                 <p class="name"> {{ name }}</p>
                 <p class="designation"> {{ designation }}</p>
             </div>
             <div class="lower">
-                <div class="link">
+                
+                <a class="link" href="mailto:magesh24092003@gmail.com">
                     <div class="icon-container">
                         <img class="icon" src="../assets/mail.png" alt="">
                     </div>
@@ -17,8 +18,9 @@
                         <p>Email</p>
                         <router-link to="#" class="router-button">{{ this.email }}</router-link>
                     </div>
-                </div>
-                <div class="link">
+                </a>
+                
+                <a class="link" href="tel:+91639412409">
                     <div class="icon-container">
                         <img class="icon" src="../assets/mobile.png" alt="">
                     </div>
@@ -26,7 +28,7 @@
                         <p>Mobile</p>
                         <router-link to="#" class="router-button">{{ this.phone }}</router-link>
                     </div>
-                </div>
+                </a>
                 <div class="link">
                     <div class="icon-container">
                         <img class="icon" src="../assets/location.png" alt="">
@@ -36,7 +38,7 @@
                         <router-link to="#" class="router-button">{{ this.location }}</router-link>
                     </div>
                 </div>
-                <div class="link">
+                <a class="link" href="https://leetcode.com/u/Magesh2409" target="_blank"> 
                     <div class="icon-container">
                         <img class="icon" src="../assets/leetcode.png" alt="">
                     </div>
@@ -44,18 +46,19 @@
                         <p>LeetCode</p>
                         <router-link to="#" class="router-button">{{this.leetcode}}</router-link>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="links">
-                <div class="links-container">
+                <a class="links-container" :href="this.$store.state.github" target="_blank">
                     <img src="../assets/github.png" alt="">
-                </div>
-                <div class="links-container">
+                </a>
+                <a class="links-container" :href="this.$store.state.linkedin" target="_blank">
                     <img src="../assets/linkedin.png" alt="">
-                </div>
+                </a>
             </div>
         </div>
         <div class="right">
+            <menuIcon></menuIcon>
             <div class="navbar" v-if="!isMobile">
                 <div class="nav-item" @click="toggleColor">
                     <router-link :to="{ name: 'About' }" class="router-button" :class="{active:this.isAbout}"> About
@@ -139,8 +142,11 @@
 
 <script>
 
+import menuIcon from '../assets/bars-regular.svg';
 export default {
+
     name : 'Home',
+    components : {menuIcon},
     
     data(){
         return {
@@ -311,6 +317,7 @@ export default {
             
             .link {
                 display: flex;
+                text-decoration: none;
 
                 .icon-container {
                     width: 35px;
