@@ -4,12 +4,15 @@
             <div class="upper">
                 <div class="profile">
                     <img src="../assets/photo.png" alt="">
+                    <span v-if="isMobile" @click="showContacts = !showContacts" class="show-contacts">Show Contacts</span>
                 </div>
-                <p class="name"> {{ name }}</p>
-                <p class="designation"> {{ designation }}</p>
+                <div class="name-designation">
+                    <p class="name"> {{ name }}</p>
+                    <p class="designation"> {{ designation }}</p>
+                </div>
             </div>
-            <div class="lower">
-                
+
+            <div class="lower-mobile" v-if="isMobile && showContacts">
                 <a class="link" href="mailto:magesh24092003@gmail.com">
                     <div class="icon-container">
                         <img class="icon" src="../assets/mail.png" alt="">
@@ -48,7 +51,46 @@
                     </div>
                 </a>
             </div>
-            <div class="links">
+            <div class="lower" v-if="!isMobile">
+                <a class="link" href="mailto:magesh24092003@gmail.com">
+                    <div class="icon-container">
+                        <img class="icon" src="../assets/mail.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Email</p>
+                        <router-link to="#" class="router-button">{{ this.email }}</router-link>
+                    </div>
+                </a>
+                
+                <a class="link" href="tel:+91639412409">
+                    <div class="icon-container">
+                        <img class="icon" src="../assets/mobile.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Mobile</p>
+                        <router-link to="#" class="router-button">{{ this.phone }}</router-link>
+                    </div>
+                </a>
+                <div class="link">
+                    <div class="icon-container">
+                        <img class="icon" src="../assets/location.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Location</p>
+                        <router-link to="#" class="router-button">{{ this.location }}</router-link>
+                    </div>
+                </div>
+                <a class="link" href="https://leetcode.com/u/Magesh2409" target="_blank"> 
+                    <div class="icon-container">
+                        <img class="icon" src="../assets/leetcode.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>LeetCode</p>
+                        <router-link to="#" class="router-button">{{this.leetcode}}</router-link>
+                    </div>
+                </a>
+            </div>
+            <div class="links" v-if="!isMobile">
                 <a class="links-container" :href="this.$store.state.github" target="_blank">
                     <img src="../assets/github.png" alt="">
                 </a>
@@ -58,7 +100,6 @@
             </div>
         </div>
         <div class="right">
-            <menuIcon></menuIcon>
             <div class="navbar" v-if="!isMobile">
                 <div class="nav-item" @click="toggleColor">
                     <router-link :to="{ name: 'About' }" class="router-button" :class="{active:this.isAbout}"> About
@@ -88,6 +129,7 @@
             <div class="about-section">
                 <div class="about-me-header">
                     <h1>About Me</h1>
+                    <p> Hello </p>
                 </div>
                 <div class="content">
                     <p v-for="(content,index) in this.aboutMe" :key="index"> {{ content }}</p>
@@ -100,7 +142,7 @@
                 <div class="interested">
                     <div class="interested-item">
                         <div class="interested-img">
-                            <img src="../assets/logo.png" alt="">
+                            <img src="../assets/web.svg" alt="">
                         </div>
                         <div class="interested-content">
                             <h3>Web Development</h3>
@@ -109,7 +151,7 @@
                     </div>
                     <div class="interested-item">
                         <div class="interested-img">
-                            <img src="../assets/logo.png" alt="">
+                            <img src="../assets/DA.png" alt="">
                         </div>
                         <div class="interested-content">
                             <h3>Data Analytics</h3>
@@ -118,7 +160,7 @@
                     </div>
                     <div class="interested-item">
                         <div class="interested-img">
-                            <img src="../assets/logo.png" alt="">
+                            <img src="../assets/DSA.png" alt="">
                         </div>
                         <div class="interested-content">
                             <h3>Data Structures</h3>
@@ -127,7 +169,7 @@
                     </div>
                     <div class="interested-item">
                         <div class="interested-img">
-                            <img src="../assets/logo.png" alt="">
+                            <img src="../assets/tech.svg" alt="">
                         </div>
                         <div class="interested-content">
                             <h3>Technology</h3>
@@ -142,12 +184,9 @@
 
 <script>
 
-import menuIcon from '../assets/bars-regular.svg';
 export default {
 
     name : 'Home',
-    components : {menuIcon},
-    
     data(){
         return {
             name : this.$store.state.name,
@@ -166,6 +205,7 @@ export default {
             aboutMe : this.$store.state.aboutMe,
 
             isMobile : false,
+            showContacts : false,
         }
     },
 
@@ -214,7 +254,7 @@ export default {
         },
 
         handleResize(){
-            if (window.innerWidth < 768){
+            if (window.innerWidth < 800){
                 this.isMobile = true;
             } else {
                 this.isMobile = false;
@@ -230,13 +270,67 @@ export default {
 </script>
 
 <style scoped>
+.upper {
+    position: relative; /* Ensure .upper is the positioned ancestor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom-color: rgb(56, 56, 56);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    width: 90%;
+}
+
+@media (max-width: 800px) {
+    .upper {
+        border-bottom-color: none;
+        border-bottom-width: none;
+        border-bottom-style: none;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .show-contacts {
+        position: absolute;
+        right: -45px;
+        top: -20px;
+        cursor: pointer;
+        background-color: rgb(43, 43, 44);
+        z-index: 100;
+        padding: 8px;
+        border-width: 0.5px;
+        border-color: rgb(56, 56, 56);
+        border-style: solid;
+        border-radius: 0px 18px 0px 18px;
+        color: rgb(255, 219, 112);
+        font-size: 12px;
+    }
+}
+
+.profile {
+    display: flex;
+    img {
+        margin-top: 32px;
+        width: 120px;
+        height: 120px;
+        border-radius: 15%;
+    }
+}
+
+.name {
+    color: #fff;
+    font-size: 22px;
+    margin-top: 20px;
+}
+
 .home {
     display: flex;
     margin-top: 50px;
     width: 92%;
     gap:32px;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 800px) {
         display: flex;
         flex-direction: column;
         gap:30px;
@@ -246,6 +340,7 @@ export default {
         .left {
             width: 100%;
             padding: 20px;
+
         }
         .right {
             width: 100%;
@@ -281,13 +376,46 @@ export default {
             border-bottom-style: solid;
             width: 90%;
 
+            .name-designation {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            @media (max-width : 800px) {
+                border-bottom-color: none;
+                border-bottom-width: none;
+                border-bottom-style: none;
+                flex-direction: row;
+                gap:20px;  
+                .show-contacts {
+                    position: absolute;
+                    right:-45px;
+                    top:-20px;
+                    cursor: pointer;
+                    background-color:rgb(43, 43, 44);
+                    z-index:100;
+                    padding:8px;
+                    border-width: 0.5px;
+                    border-color: rgb(56, 56, 56);
+                    border-style: solid;
+                    border-radius: 0px 18px 0px 18px;
+                    color:  rgb(255, 219, 112);
+                    font-size: 12px;
+                }
+            }
+            position:relative;
+
             .profile {
+                display: flex;
                 img {
                     margin-top: 32px;
                     width:120px;
                     height: 120px;
                     border-radius: 15%;
                 }
+
             }
 
             .name {
@@ -308,6 +436,62 @@ export default {
                 padding: 6px 12px;
                 text-align: center;
             }
+        }
+
+        .lower-mobile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:20px;
+            padding-top: 20px;
+            border-bottom-color: rgb(56, 56, 56);
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            width: 90%;
+            
+            
+            .link {
+                display: flex;
+                text-decoration: none;
+
+                .icon-container {
+                    width: 35px;
+                    height: 35px;
+                    background-color: rgb(43,43,44);
+                    border-style: solid;
+                    border-width: 0.5px;
+                    border-color: rgb(56, 56, 56);
+                    box-shadow: 0px 0px 5px 0px #000;
+                    margin-right: 10px;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
+                    margin-top: 8px;
+
+                    .icon {
+                        width: 14px;
+                        height:14px;
+                        padding-left: 10px;
+                        padding-top: 10px;
+                    }
+                }
+                .info {
+                    display: flex;
+                    flex-direction: column;
+
+                    p {
+                        font-size: 11px;
+                        text-transform: uppercase;
+                        color: rgba(214,214,214,0.7);
+                        margin-bottom: 5px;
+                    }
+
+                    .router-button {
+                        font-size: 13px;
+                        text-decoration: none;
+                        color:rgb(250,250,250);
+                    }
+                }
+            }
+
         }
 
         .lower {
@@ -425,6 +609,18 @@ export default {
             .about-me-header {
                 font-size: 18px;
                 font-weight: 600;
+
+                h1 {
+                    margin-bottom: 10px;
+                }
+                p {
+                    width: 60px;
+                    height:5px;
+                    background-color: rgb(255,219,122);
+                    font-size: 0px;
+                    border-radius: 10px;
+                    margin-top: 0px;
+                }
             }
 
             .content{
@@ -460,7 +656,7 @@ export default {
                 margin-top: 10px;
                 padding-bottom: 50px;
                 
-                @media screen and (max-width: 767px) {
+                @media screen and (max-width: 800px) {
                     display: flex;
                     flex-direction: column;
                 }
@@ -480,17 +676,12 @@ export default {
                     .interested-img {
                         width: 50px;
                         height: 50px;
-                        border-radius: 50%;
-                        background-color: rgb(43,43,44);
-                        border-width: 1px;
-                        border-color: rgb(56, 56, 56);
-                        border-style: solid;
-                        box-shadow: 0px 0px 5px 0px #000;
+                        border-width: 0px;
 
                         img {
                             width: 50px;
                             height: 50px;
-                            border-radius: 50%;
+                            /* border-radius: 50%; */
                         }
                     }
 
@@ -501,6 +692,9 @@ export default {
                         h3 {
                             font-size: 16px;
                             color: rgb(250,250,250);
+                            margin-top: 5px;
+                            padding-bottom: 0px;
+                            margin-bottom: 0px;
                         }
 
                         p {
