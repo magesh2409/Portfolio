@@ -126,58 +126,15 @@
                         :class="{ active : this.isCertificates}"> Certificates </router-link>
                 </div>
             </div>
-            <div class="about-section">
-                <div class="about-me-header">
-                    <h1>About Me</h1>
-                    <p> Hello </p>
-                </div>
-                <div class="content">
-                    <p v-for="(content,index) in this.aboutMe" :key="index"> {{ content }}</p>
-                </div>
+            
+            <div>
+                <slot> Default </slot>
             </div>
-            <div class="interested-container">
-                <div class="interested-header">
-                    <h1>What I'm Interested?</h1>
-                </div>
-                <div class="interested">
-                    <div class="interested-item">
-                        <div class="interested-img">
-                            <img src="../assets/web.svg" alt="">
-                        </div>
-                        <div class="interested-content">
-                            <h3>Web Development</h3>
-                            <p>Crafting responsive, user-friendly websites with modern tools and frameworks.</p>
-                        </div>
-                    </div>
-                    <div class="interested-item">
-                        <div class="interested-img">
-                            <img src="../assets/DA.png" alt="">
-                        </div>
-                        <div class="interested-content">
-                            <h3>Data Analytics</h3>
-                            <p>Transforming raw data into actionable insights for smarter decisions.</p>
-                        </div>
-                    </div>
-                    <div class="interested-item">
-                        <div class="interested-img">
-                            <img src="../assets/DSA.png" alt="">
-                        </div>
-                        <div class="interested-content">
-                            <h3>Data Structures</h3>
-                            <p>Building efficient algorithms to solve complex problems.</p>
-                        </div>
-                    </div>
-                    <div class="interested-item">
-                        <div class="interested-img">
-                            <img src="../assets/tech.svg" alt="">
-                        </div>
-                        <div class="interested-content">
-                            <h3>Technology</h3>
-                            <p>Exploring and adapting to the latest innovations to drive progress.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- <div>
+                <slot name="content-section"></slot>
+            </div> -->
+
+
         </div>
     </div>
 </template>
@@ -186,7 +143,7 @@
 
 export default {
 
-    name : 'Home',
+    name : 'Pattern',
     data(){
         return {
             name : this.$store.state.name,
@@ -269,7 +226,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .upper {
     position: relative; /* Ensure .upper is the positioned ancestor */
     display: flex;
@@ -720,4 +677,4 @@ export default {
         }
     }
 }
-</style>
+</style> -->
