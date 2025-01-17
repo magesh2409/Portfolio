@@ -366,6 +366,7 @@ export default {
         border-width: 1px;
         border-style: solid;
         border-radius: 20px;
+        height:100%;
 
         .upper {
             display: flex;
