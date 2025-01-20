@@ -269,7 +269,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .upper {
     position: relative; /* Ensure .upper is the positioned ancestor */
     display: flex;
