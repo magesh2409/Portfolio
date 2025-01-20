@@ -4,7 +4,8 @@
             <div class="upper">
                 <div class="profile">
                     <img src="../assets/photo.png" alt="">
-                    <span v-if="isMobile" @click="showContacts = !showContacts" class="show-contacts">Show Contacts</span>
+                    <span v-if="isMobile" @click="showContacts = !showContacts" class="show-contacts">Show
+                        Contacts</span>
                 </div>
                 <div class="name-designation">
                     <p class="name"> {{ name }}</p>
@@ -22,7 +23,7 @@
                         <router-link to="#" class="router-button">{{ this.email }}</router-link>
                     </div>
                 </a>
-                
+
                 <a class="link" href="tel:+91639412409">
                     <div class="icon-container">
                         <img class="icon" src="../assets/mobile.png" alt="">
@@ -41,7 +42,7 @@
                         <router-link to="#" class="router-button">{{ this.location }}</router-link>
                     </div>
                 </div>
-                <a class="link" href="https://leetcode.com/u/Magesh2409" target="_blank"> 
+                <a class="link" href="https://leetcode.com/u/Magesh2409" target="_blank">
                     <div class="icon-container">
                         <img class="icon" src="../assets/leetcode.png" alt="">
                     </div>
@@ -61,7 +62,7 @@
                         <router-link to="#" class="router-button">{{ this.email }}</router-link>
                     </div>
                 </a>
-                
+
                 <a class="link" href="tel:+91639412409">
                     <div class="icon-container">
                         <img class="icon" src="../assets/mobile.png" alt="">
@@ -80,7 +81,7 @@
                         <router-link to="#" class="router-button">{{ this.location }}</router-link>
                     </div>
                 </div>
-                <a class="link" href="https://leetcode.com/u/Magesh2409" target="_blank"> 
+                <a class="link" href="https://leetcode.com/u/Magesh2409" target="_blank">
                     <div class="icon-container">
                         <img class="icon" src="../assets/leetcode.png" alt="">
                     </div>
@@ -126,14 +127,42 @@
                         :class="{ active : this.isCertificates}"> Certificates </router-link>
                 </div>
             </div>
-            <div class="experience-timeline">
-                <h1> Experience</h1>
+            <div class="container-timeline">
+                <h1>Education</h1>
+                <p class="color">Hello</p>
                 <div class="timeline">
-                    <ul>
-                        <li data-date="2021-2025">Engineering Degree</li>
-                    </ul>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h1 class="school">Thanthai Periyar Government Institute of Technology, Vellore</h1>
+                            <p class="dept">BE in Electronics and Communication Engineering</p>
+                            <p class="year">2021 - 2025</p>
+                            <p class="grade">CGPA - 8.1/10</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h1 class="school">YMCA School, Tirupathur</h1>
+                            <p class="dept">HSC</p>
+                            <p class="year">2020 - 2021</p>
+                            <p class="grade">Percentage - 93%</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h1 class="school">YMCA School, Tirupathur</h1>
+                            <p class="dept">SSLC</p>
+                            <p class="year">2018 - 2019</p>
+                            <p class="grade">Percentage - 95%</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
@@ -226,349 +255,119 @@ export default {
 </script>
 
 <style scoped>
-.upper {
-    position: relative; /* Ensure .upper is the positioned ancestor */
+
+.container-timeline {
+    padding:0px 22px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    border-bottom-color: rgb(56, 56, 56);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    width: 90%;
-}
 
-@media (max-width: 800px) {
-    .upper {
-        border-bottom-color: none;
-        border-bottom-width: none;
-        border-bottom-style: none;
-        flex-direction: row;
-        gap: 20px;
+    h1 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 1rem;
     }
 
-    .show-contacts {
-        position: absolute;
-        right: -45px;
-        top: -20px;
-        cursor: pointer;
-        background-color: rgb(43, 43, 44);
-        z-index: 100;
-        padding: 8px;
-        border-width: 0.5px;
-        border-color: rgb(56, 56, 56);
-        border-style: solid;
-        border-radius: 0px 18px 0px 18px;
-        color: rgb(255, 219, 112);
-        font-size: 12px;
+    .color {
+        width: 40px;
+        height:5px;
+        background-color: rgb(255,219,122);
+        font-size: 0px;
+        border-radius: 10px;
+        margin-top: 0px;
     }
-}
 
-.profile {
-    display: flex;
-    img {
-        margin-top: 32px;
-        width: 120px;
-        height: 120px;
-        border-radius: 15%;
-    }
-}
-
-.name {
-    color: #fff;
-    font-size: 22px;
-    margin-top: 20px;
-}
-
-.home {
-    display: flex;
-    margin-top: 50px;
-    width: 92%;
-    gap:32px;
-
-    @media screen and (max-width: 800px) {
+    .timeline {
         display: flex;
         flex-direction: column;
-        gap:30px;
-        align-items: center;
+        align-items: start;
         justify-content: center;
+        border-left : 1px solid rgb(56,56,56);
+        margin-top: 20px;
+        margin-bottom: 32px;
 
-        .left {
-            width: 100%;
-            padding: 20px;
-
-        }
-        .right {
-            width: 100%;
-            overflow: hidden;
-            padding:20px;
-            margin-left: 0px;
-            position: relative;
-        }
-        
-    }
-
-    .left {
-        height: 100%;
-        flex:2;
-        padding: 20px;
-        margin-top: 100px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: rgb(30,30,31);
-        border-color: rgb(56, 56, 56);
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 20px;
-
-        .upper {
+        .timeline-item {
+            padding-left: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: start;
             justify-content: center;
-            border-bottom-color: rgb(56, 56, 56);
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            width: 90%;
+            position: relative;
+            margin-bottom: 22px;
 
-            .name-designation {
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            &::before {
+                content: '';
+                width: 12px;
+                height: 12px;
+                background-color: rgb(56,56,56);
+                border-radius: 50%;
+                position: absolute;
+                left:-6px; 
+                top:7px;
+                
+            }
+
+            &::after {
+                content: '';
+                width: 5px;
+                height: 5px;
+                background-color: rgb(255,219,122);
+                border-radius: 50%;
+                position: absolute;
+                left: -2.6px;
+                top: 10.5px;
+            }
+            
+            .timeline-content {
                 display: flex;
                 flex-direction: column;
+                align-items: start;
                 justify-content: center;
-                align-items: center;
+
+                .school {
+                    font-size: 14px;
+                    font-weight: 700;
+                    margin:3x 0px;
+                    padding:0px;
+                    margin-bottom: 3px;
+
+                }
+
+                .year {
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin:3px 0px;
+                    padding:0px;
+                    color:rgb(255,219,122);
+                    
+                }
+
+                .dept {
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin:3px 0px;
+                    color: #d6d6d6;
+                    padding:0px;
+
+                }
+
+                .grade {
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin:3px 0px;
+                    color: #d6d6d6;
+                    padding:0px;
+                }
+
             }
-
-            @media (max-width : 800px) {
-                border-bottom-color: none;
-                border-bottom-width: none;
-                border-bottom-style: none;
-                flex-direction: row;
-                gap:20px;  
-                .show-contacts {
-                    position: absolute;
-                    right:-45px;
-                    top:-20px;
-                    cursor: pointer;
-                    background-color:rgb(43, 43, 44);
-                    z-index:100;
-                    padding:8px;
-                    border-width: 0.5px;
-                    border-color: rgb(56, 56, 56);
-                    border-style: solid;
-                    border-radius: 0px 18px 0px 18px;
-                    color:  rgb(255, 219, 112);
-                    font-size: 12px;
-                }
-            }
-            position:relative;
-
-            .profile {
-                display: flex;
-                img {
-                    margin-top: 32px;
-                    width:120px;
-                    height: 120px;
-                    border-radius: 15%;
-                }
-
-            }
-
-            .name {
-                color: #fff;
-                font-size: 22px;
-                margin-top: 20px;
-            }
-
-            .designation {
-                color: #fff;
-                font-size: 12px;
-                margin-top: -10px;
-                background-color: rgb(43,43,44);
-                border-width: 0px;
-                border-color: rgb(56, 56, 56);
-                border-style: solid;
-                border-radius: 4px;
-                padding: 6px 12px;
-                text-align: center;
-            }
-        }
-
-        .lower-mobile {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap:20px;
-            padding-top: 20px;
-            border-bottom-color: rgb(56, 56, 56);
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            width: 90%;
-            
-            
-            .link {
-                display: flex;
-                text-decoration: none;
-
-                .icon-container {
-                    width: 35px;
-                    height: 35px;
-                    background-color: rgb(43,43,44);
-                    border-style: solid;
-                    border-width: 0.5px;
-                    border-color: rgb(56, 56, 56);
-                    box-shadow: 0px 0px 5px 0px #000;
-                    margin-right: 10px;
-                    border-radius: 10px;
-                    margin-bottom: 20px;
-                    margin-top: 8px;
-
-                    .icon {
-                        width: 14px;
-                        height:14px;
-                        padding-left: 10px;
-                        padding-top: 10px;
-                    }
-                }
-                .info {
-                    display: flex;
-                    flex-direction: column;
-
-                    p {
-                        font-size: 11px;
-                        text-transform: uppercase;
-                        color: rgba(214,214,214,0.7);
-                        margin-bottom: 5px;
-                    }
-
-                    .router-button {
-                        font-size: 13px;
-                        text-decoration: none;
-                        color:rgb(250,250,250);
-                    }
-                }
-            }
-
-        }
-
-        .lower {
-            display: flex;
-            flex-direction: column;
-            
-            
-            .link {
-                display: flex;
-                text-decoration: none;
-
-                .icon-container {
-                    width: 35px;
-                    height: 35px;
-                    background-color: rgb(43,43,44);
-                    border-style: solid;
-                    border-width: 0.5px;
-                    border-color: rgb(56, 56, 56);
-                    margin-right: 10px;
-                    border-radius: 10px;
-                    margin-bottom: 20px;
-                    margin-top: 8px;
-
-                    .icon {
-                        width: 14px;
-                        height:14px;
-                        padding-left: 10px;
-                        padding-top: 10px;
-                    }
-                }
-                .info {
-                    display: flex;
-                    flex-direction: column;
-
-                    p {
-                        font-size: 11px;
-                        text-transform: uppercase;
-                        color: rgba(214,214,214,0.7);
-                        margin-bottom: 5px;
-                    }
-
-                    .router-button {
-                        font-size: 13px;
-                        text-decoration: none;
-                        color:rgb(250,250,250);
-                    }
-                }
-            }
-        }
-
-        .links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap:5px;
-
-            .links-container {
-                width:20px;
-                height: 20px;
-                border-radius: 50%;
-
-                img{
-                    width:20px;
-                    height: 20px;
-                }
-            }
-        }
-    }
-    .right {
-        /* margin-left: 32px; */
-        flex:7;
-        display: flex;
-        flex-direction: column;
-        background-color: rgb(30,30,31);
-        border-color: rgb(56, 56, 56);
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 20px;
-        height: 100%;
-
-
-
-        .navbar {
-                display: flex;
-                flex-direction: row;
-                margin-left: auto;
-                background-color: rgba(43, 43, 44, 0.75);
-                border-color: rgb(56,56,56);
-                border-width: 1px;
-                border-style: solid;
-                border-radius: 0px 20px;
-
-                @media (max-width: 800px) {
-                    display: flex;
-                    position: fixed;
-                    align-items: center;
-                    justify-content: center;
-                    left: 0px;
-                    right: 0px;
-                    bottom: 0px;
-                    z-index: 200;
-                    background-color:rgb(30,30,31);
-                    border-radius: 25px 25px 0px 0px;
-                }
-
-        
-        
-                .nav-item {
-                    padding: 20px;
-                    .router-button {
-                        text-decoration: none;
-                        color: rgb(250,250,250);
-                    }
-
-                    .active {
-                        color : rgb(255,219,122);
-                    }
-                }
         }
 
     }
+
 }
 </style>
