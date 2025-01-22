@@ -98,6 +98,24 @@
                     <img src="../assets/linkedin.png" alt="">
                 </a>
             </div>
+            <div class="links" v-if="isMobile && showContacts">
+                <a class="links-container" :href="this.$store.state.github" target="_blank">
+                    <img src="../assets/github.png" alt="">
+                </a>
+                <a class="links-container" :href="this.$store.state.linkedin" target="_blank">
+                    <img src="../assets/linkedin.png" alt="">
+                </a>
+            </div>
+            <div class="resume" v-if="!isMobile">
+                <a :href="this.$store.state.resumeLink" target="_blank">
+                    <button>Download CV</button>
+                </a>
+            </div>
+            <div class="resume" v-if="isMobile && showContacts">
+                <a :href="this.$store.state.resumeLink" target="_blank">
+                    <button>Download CV</button>
+                </a>
+            </div>
         </div>
         <div class="right">
             <div class="navbar">
@@ -106,16 +124,8 @@
                     </router-link>
                 </div>
                 <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Education' }" class="router-button" :class="{active : this.isEducation}">
-                        Education </router-link>
-                </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Experience' }" class="router-button"
-                        :class="{ active : this.isExperience}"> Experience </router-link>
-                </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Skills' }" class="router-button" :class="{active : this.isSkills}">
-                        Skills </router-link>
+                    <router-link :to="{ name: 'Background' }" class="router-button" :class="{active : this.isEducation}">
+                        Background </router-link>
                 </div>
                 <div class="nav-item" @click="toggleColor">
                     <router-link :to="{ name: 'Projects' }" class="router-button" :class="{ active : this.isProjects}">
@@ -178,6 +188,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
@@ -206,6 +217,7 @@ export default {
 
             isMobile : false,
             showContacts : false,
+
         }
     },
 
@@ -233,7 +245,7 @@ export default {
             } else if (dir === 'Experience'){
                 this.isExperience = true;
                 return;
-            } else if (dir === 'Education'){
+            } else if (dir === 'Background'){
                 this.isEducation = true;
                 return;
             
@@ -558,6 +570,28 @@ export default {
                 img{
                     width:20px;
                     height: 20px;
+                }
+            }
+        }
+
+        .resume {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top:12px;
+
+            button {
+                padding : 5px 10px;
+                color:rgb(255, 219, 112);
+                background-color:rgb(43, 43, 44);
+                outline:none;
+                border-style:solid;
+                border-width:0px;
+                border-radius: 10px;
+
+                &:hover {
+                    opacity: 0.5;
+                    cursor: pointer;
                 }
             }
         }

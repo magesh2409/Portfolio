@@ -99,6 +99,24 @@
                     <img src="../assets/linkedin.png" alt="">
                 </a>
             </div>
+            <div class="links" v-if="isMobile && showContacts">
+                <a class="links-container" :href="this.$store.state.github" target="_blank">
+                    <img src="../assets/github.png" alt="">
+                </a>
+                <a class="links-container" :href="this.$store.state.linkedin" target="_blank">
+                    <img src="../assets/linkedin.png" alt="">
+                </a>
+            </div>
+            <div class="resume" v-if="!isMobile">
+                <a :href="this.$store.state.resumeLink" target="_blank">
+                    <button>Download CV</button>
+                </a>
+            </div>
+            <div class="resume" v-if="isMobile && showContacts">
+                <a :href="this.$store.state.resumeLink" target="_blank">
+                    <button>Download CV</button>
+                </a>
+            </div>
         </div>
         <div class="right">
             <div class="navbar">
@@ -107,16 +125,8 @@
                     </router-link>
                 </div>
                 <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Education' }" class="router-button" :class="{active : this.isEducation}">
-                        Education </router-link>
-                </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Experience' }" class="router-button"
-                        :class="{ active : this.isExperience}"> Experience </router-link>
-                </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Skills' }" class="router-button" :class="{active : this.isSkills}">
-                        Skills </router-link>
+                    <router-link :to="{ name: 'Background' }" class="router-button" :class="{active : this.isEducation}">
+                        Background </router-link>
                 </div>
                 <div class="nav-item" @click="toggleColor">
                     <router-link :to="{ name: 'Projects' }" class="router-button" :class="{ active : this.isProjects}">
@@ -132,7 +142,6 @@
                 <p class="color">Hello</p>
                 <div class="timeline">
                     <div class="timeline-item">
-                        <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <h1 class="school">Thanthai Periyar Government Institute of Technology, Vellore</h1>
                             <p class="dept">BE in Electronics and Communication Engineering</p>
@@ -142,7 +151,6 @@
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <h1 class="school">YMCA School, Tirupathur</h1>
                             <p class="dept">HSC</p>
@@ -151,14 +159,59 @@
                         </div>
                     </div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
+                    <div class="timeline-item last-item">
                         <div class="timeline-content">
                             <h1 class="school">YMCA School, Tirupathur</h1>
                             <p class="dept">SSLC</p>
                             <p class="year">2018 - 2019</p>
                             <p class="grade">Percentage - 95%</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-timeline">
+                <h1>Experience</h1>
+                <p class="color">Hello</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h1 class="school">Hostel Coding Program</h1>
+                            <p class="dept">DSA Instructor</p>
+                            <p class="year">Aug 2024 - Present</p>
+                            <p class="grade">Skills : DSA , Debugging</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item last-item">
+                        <div class="timeline-content">
+                            <h1 class="school">CodeHop Interfusion</h1>
+                            <p class="dept">Data Analyst Intern</p>
+                            <p class="year">May 2024 - Aug 2024</p>
+                            <p class="grade">Skills : Excel , Power BI , Python , MySQL</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="skills-container">
+                <h1>My Skills</h1>
+                <p class="color">Hello</p>
+                <div class="skill-list">
+                    <div class="skills">
+                        <p class="skill-header">Programming Languages </p>
+                        <p class="skill">: Python , MySQL , HTML , CSS , Javascript</p>
+                    </div>
+                    <div class="skills">
+                        <p class="skill-header">Tools </p>
+                        <p class="skill">: Power BI , VS Code , Git/Github</p>
+                    </div>
+                    <div class="skills">
+                        <p class="skill-header">Concepts </p>
+                        <p class="skill">: Data Structures & Algorithm , Front-End Development , Data Analytics</p>
+                    </div>
+                    <div class="skills">
+                        <p class="skill-header">Frameworks </p>
+                        <p class="skill">: Vue.js</p>
                     </div>
                 </div>
             </div>
@@ -218,7 +271,7 @@ export default {
             } else if (dir === 'Experience'){
                 this.isExperience = true;
                 return;
-            } else if (dir === 'Education'){
+            } else if (dir === 'Background'){
                 this.isEducation = true;
                 return;
             
@@ -255,6 +308,14 @@ export default {
 </script>
 
 <style scoped>
+    .color {
+        width: 40px;
+        height:5px;
+        background-color: rgb(255,219,122);
+        font-size: 0px;
+        border-radius: 10px;
+        margin-top: 0px;
+    }
 
 .container-timeline {
     padding:0px 22px;
@@ -283,9 +344,12 @@ export default {
         flex-direction: column;
         align-items: start;
         justify-content: center;
-        border-left : 1px solid rgb(56,56,56);
         margin-top: 20px;
         margin-bottom: 32px;
+
+        &:last-child {
+                margin-bottom : 22px;
+            }
 
         .timeline-item {
             padding-left: 20px;
@@ -294,7 +358,10 @@ export default {
             align-items: start;
             justify-content: center;
             position: relative;
-            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-left : 1px solid rgb(56,56,56);
+            margin:0px;
+
 
             &:last-child {
                 margin-bottom: 0px;
@@ -308,7 +375,7 @@ export default {
                 border-radius: 50%;
                 position: absolute;
                 left:-6px; 
-                top:7px;
+                top:0px;
                 
             }
 
@@ -319,8 +386,8 @@ export default {
                 background-color: rgb(255,219,122);
                 border-radius: 50%;
                 position: absolute;
-                left: -2.6px;
-                top: 10.5px;
+                left: -2.5px;
+                top: 3.4px;
             }
             
             .timeline-content {
@@ -328,11 +395,12 @@ export default {
                 flex-direction: column;
                 align-items: start;
                 justify-content: center;
+                margin-top: 0px;
 
                 .school {
                     font-size: 14px;
                     font-weight: 700;
-                    margin:3x 0px;
+                    margin:0px;
                     padding:0px;
                     margin-bottom: 3px;
 
@@ -366,8 +434,59 @@ export default {
 
             }
         }
+        .last-item {
+            border-left:none;
+            margin-top: 0px;
+            padding-top: 0px;
+        }
 
     }
 
+    
 }
+.skills-container {
+
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding : 0px 22px;
+    margin-bottom: 32px;
+
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .skill-list {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        background-color: rgb(32,32,32);
+        padding:12px 15px;
+        margin-top: 22px;
+        border-radius: 15px;
+
+        .skills {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin : -5px 0px;
+            padding: 0px;
+
+            .skill-header {
+                font-size: 15px;
+                font-weight: 700;
+            }
+
+            .skill {
+                font-size: 13px;
+                color: #d6d6d6;
+            }
+
+        }
+        
+    }
+}
+
 </style>

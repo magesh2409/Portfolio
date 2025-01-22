@@ -98,6 +98,11 @@
                     <img src="../assets/linkedin.png" alt="">
                 </a>
             </div>
+            <div class="resume">
+                <a :href="this.$store.state.resumeLink" target="_blank">
+                    <button>Download CV</button>
+                </a>
+            </div>
         </div>
         <div class="right">
             <div class="navbar">
@@ -106,17 +111,10 @@
                     </router-link>
                 </div>
                 <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Education' }" class="router-button" :class="{active : this.isEducation}">
-                        Education </router-link>
+                    <router-link :to="{ name: 'Background' }" class="router-button" :class="{active : this.isEducation}">
+                        Background </router-link>
                 </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Experience' }" class="router-button"
-                        :class="{ active : this.isExperience}"> Experience </router-link>
-                </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Skills' }" class="router-button" :class="{active : this.isSkills}">
-                        Skills </router-link>
-                    </div>
+
                 <div class="nav-item" @click="toggleColor">
                     <router-link :to="{ name: 'Projects' }" class="router-button" :class="{ active : this.isProjects}">
                         Projects </router-link>
@@ -235,7 +233,7 @@ export default {
             } else if (dir === 'Experience'){
                 this.isExperience = true;
                 return;
-            } else if (dir === 'Education'){
+            } else if (dir === 'Background'){
                 this.isEducation = true;
                 return;
             
