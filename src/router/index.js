@@ -1,10 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import About from '../views/About.vue';
-import Education from '@/views/Education.vue';
-import Skills from '@/views/Skills.vue';
+import Background from '@/views/Background.vue';
 import Certificates from '@/views/Certificates.vue';
-import Experience from '@/views/Experience.vue';
 import Projects from '@/views/Projects.vue';
 
 
@@ -18,14 +16,9 @@ const routes = [
     component: About
   },
   {
-    path: '/education',
-    name: 'Education',
-    component: Education
-  },
-  {
-    path: '/skills',
-    name: 'Skills',
-    component: Skills
+    path: '/background',
+    name: 'Background',
+    component: Background
   },
   {
     path: '/certificates',
@@ -33,11 +26,6 @@ const routes = [
     component: Certificates
   },
   
-  {
-    path: '/experience',
-    name: 'Experience',
-    component: Experience
-  },
   {
     path: '/projects',
     name: 'Projects',

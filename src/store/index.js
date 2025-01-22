@@ -21,6 +21,8 @@ export default new Vuex.Store({
                 "Passionate about data analysis, automation, front-end development, and software engineering, I’m on a journey to create impactful solutions that combine technical expertise with creativity."
     ],
 
+    resumeLink : "https://drive.google.com/file/d/18AY9T2qPEsbIGJLg0kMyivY5fPlLfRuQ/view",
+
     certificates : [
       { 
         name : "Google Data Analyst Specialization",
