@@ -124,17 +124,10 @@
                     </router-link>
                 </div>
                 <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Education' }" class="router-button" :class="{active : this.isEducation}">
-                        Education </router-link>
+                    <router-link :to="{ name: 'Background' }" class="router-button" :class="{active : this.isEducation}">
+                        Background </router-link>
                 </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Experience' }" class="router-button"
-                        :class="{ active : this.isExperience}"> Experience </router-link>
-                </div>
-                <div class="nav-item" @click="toggleColor">
-                    <router-link :to="{ name: 'Skills' }" class="router-button" :class="{active : this.isSkills}">
-                        Skills </router-link>
-                    </div>
+
                 <div class="nav-item" @click="toggleColor">
                     <router-link :to="{ name: 'Projects' }" class="router-button" :class="{ active : this.isProjects}">
                         Projects </router-link>
@@ -146,9 +139,35 @@
             </div>
             <div class="about-section">
                 <div class="about-me-header">
-                    <h1>Projects</h1>
+                    <h1>Certificates</h1>
                     <p> Hello </p>
                 </div>
+            </div>
+            <div class="certificates">
+                <a href="https://fireblogsvue.netlify.app/" target="_blank" >
+                    <div class="figure">
+                        <img src="../assets/image.png" alt="">
+                        <h1>FireBlogs </h1>
+                        <p> HTML , CSS , Vue.js , Git</p>
+                    </div>
+                </a>
+                <a href="https://drive.google.com/file/d/19LoF0EysWPXYzd8KdkSvs1BUlBFvJ8z-/view?usp=sharing" target="_blank">
+                    <div class="figure">
+                        <img src="../assets/DA_Adventure_Works.png" alt="">
+                        <h1>Data Analysis on Adventure Works </h1>
+                        <p> Excel , Power BI , Power Query </p>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1LHGgx-bzJjXkdyOaVWh6wnJHvqTBihNd/view?usp=sharing" target="_blank" >
+                    <div class="figure">
+                        <img src="../assets/DA_Bike_store.jpg" alt="">
+                        <h1> Data Analysis in Bike Store </h1>
+                        <p> MySQL , Excel , Tableau </p>
+                    </div>
+                </a>
+
+
             </div>
         </div>
     </div>
@@ -205,7 +224,7 @@ export default {
             } else if (dir === 'Experience'){
                 this.isExperience = true;
                 return;
-            } else if (dir === 'Education'){
+            } else if (dir === 'Background'){
                 this.isEducation = true;
                 return;
             
@@ -242,4 +261,79 @@ export default {
 </script>
 
 <style scoped>
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            .about-me-header {
+                font-size: 18px;
+                font-weight: 600;
+
+                h1 {
+                    margin-bottom: 10px;
+                }
+                p {
+                    width: 50px;
+                    height:5px;
+                    background-color: rgb(255,219,122);
+                    font-size: 0px;
+                    border-radius: 10px;
+                    margin-top: 5px;
+                }
+            }
+        }
+        .certificates {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            a {
+                text-decoration: none;
+                width:360px;
+                margin: 32px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                
+                @media (max-width: 1200px){
+                    width: 300px;
+                }
+            }
+            .figure { 
+                height: auto;
+                width: 80%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: left;
+    
+                img {
+                    transition:.5s ease all;
+                    width: 300px;
+                    height:200px;
+                    &:hover {
+                        transform:rotateZ(-1deg) ;
+                        width: 102%;
+                    }
+                }
+    
+                h1 {
+                    margin: 8px 5px 5px 5px;
+                    font-size: 15px;
+                    color:#fff;
+                }
+    
+                p {
+                    margin: 0px 5px 5px 5px;
+                    font-size: 15px;
+                    color:#d6d6d6b2;
+                }
+    
+            }
+        }
 </style>
