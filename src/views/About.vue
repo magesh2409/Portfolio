@@ -561,6 +561,7 @@ export default {
             align-items: center;
             justify-content: center;
             gap:5px;
+            margin-top:10px;
 
             .links-container {
                 width:20px;
@@ -568,8 +569,8 @@ export default {
                 border-radius: 50%;
 
                 img{
-                    width:20px;
-                    height: 20px;
+                    width:15px;
+                    height: 15px;
                 }
             }
         }

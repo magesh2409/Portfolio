@@ -98,11 +98,25 @@
                     <img src="../assets/linkedin.png" alt="">
                 </a>
             </div>
-            <div class="resume">
+            <div class="links" v-if="isMobile && showContacts">
+                <a class="links-container" :href="this.$store.state.github" target="_blank">
+                    <img src="../assets/github.png" alt="">
+                </a>
+                <a class="links-container" :href="this.$store.state.linkedin" target="_blank">
+                    <img src="../assets/linkedin.png" alt="">
+                </a>
+            </div>
+            <div class="resume" v-if="!isMobile">
                 <a :href="this.$store.state.resumeLink" target="_blank">
                     <button>Download CV</button>
                 </a>
             </div>
+            <div class="resume" v-if="isMobile && showContacts">
+                <a :href="this.$store.state.resumeLink" target="_blank">
+                    <button>Download CV</button>
+                </a>
+            </div>
+            
         </div>
         <div class="right">
             <div class="navbar">
